@@ -33,9 +33,12 @@ public class Square implements Shape {
         return (int) (temp ^ (temp >>> 32));
     }
 
+    @Override
     public String getShapeName(){
         return "Square";
     }
+
+    @Override
     public double getField(){
         return side*side;
     }

@@ -35,9 +35,12 @@ public class Circle implements Shape{
         return (int) (temp ^ (temp >>> 32));
     }
 
+    @Override
     public String getShapeName(){
         return "Circle";
     }
+
+    @Override
     public double getField(){
         return PI*radius*radius;
     }

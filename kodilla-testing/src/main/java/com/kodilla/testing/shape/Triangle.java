@@ -45,9 +45,12 @@ public class Triangle implements Shape{
         return result;
     }
 
+    @Override
     public String getShapeName(){
         return "Triangle";
     }
+
+    @Override
     public double getField(){
         return base*height/2;
     }
