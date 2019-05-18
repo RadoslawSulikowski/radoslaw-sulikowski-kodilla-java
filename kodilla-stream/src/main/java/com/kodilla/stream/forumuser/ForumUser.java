@@ -9,12 +9,12 @@ public final class ForumUser{
     private final LocalDate dateOfBirth;
     private int publishedPosts;
 
-    public ForumUser(int userIdentifier, String username, char sex, LocalDate dateOfBirt, int publicatedPosts){
+    public ForumUser(final int userIdentifier, final String username, final char sex, final LocalDate dateOfBirth, int publishedPosts){
         this.userIdentifier = userIdentifier;
         this.username = username;
         this.sex = sex;
-        this.dateOfBirth = dateOfBirt;
-        this.publishedPosts = publicatedPosts;
+        this.dateOfBirth = dateOfBirth;
+        this.publishedPosts = publishedPosts;
     }
 
     public int getUserIdentifier(){
