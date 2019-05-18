@@ -1,37 +1,26 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.Iterate.NumbersGenerator;
-import com.kodilla.stream.beautifier.PoemBeautifier;
+import com.kodilla.stream.forumuser.Forum;
+import com.kodilla.stream.forumuser.ForumUser;
+
+import java.time.LocalDate;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args){
 
-        PoemBeautifier poemBeautifier = new PoemBeautifier();
+        Forum forum = new Forum();
 
-        //Task beautifiers
-        poemBeautifier.beautify("Some text to beautify", textToDecorate -> "ABC" + textToDecorate + "ABC");
-        poemBeautifier.beautify("Some text to beautify", textToDecorate -> textToDecorate.toUpperCase());
+        Map<Integer, ForumUser> resultMap = forum.getListOfUsers().stream()
+                .filter(u -> u.getSex() == 'M')
+                .filter(u -> (u.getDateOfBirth().isBefore(LocalDate.now().minusYears(20)))||
+                        (u.getDateOfBirth().isEqual(LocalDate.now().minusYears(20))))
+                .filter(u -> u.getPublishedPosts() > 0)
+                .collect(Collectors.toMap(ForumUser::getUserIdentifier, u -> u));
 
-        //Own beautifiers
-        poemBeautifier.beautify("Some text to beautify",
-                textToDecorate -> "(_8(|)" + textToDecorate.replace( " ","(_8(|) (_8(|)") + "(_8(|)");
+        resultMap.forEach((key, value) -> System.out.println(value));
 
-        poemBeautifier.beautify("Some text to beautify", textToDecorate -> {
-            StringBuilder beautifiedText = new StringBuilder();
-            for(int i = 0; i < textToDecorate.length(); i++){
-                if(i % 2 == 0){
-                    beautifiedText.append(Character.toUpperCase(textToDecorate.charAt(i)));
-                }
-                if(i % 2 == 1){
-                    beautifiedText.append(Character.toLowerCase(textToDecorate.charAt(i)));
-                }
-            }
-            return beautifiedText.toString();
-        });
-        poemBeautifier.beautify("Some text to beautify", textToDecorate -> " (_8(|)" + textToDecorate + "(_8(|) ");
-
-        System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
     }
 }
 
