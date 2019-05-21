@@ -9,6 +9,7 @@ public final class Continent{
     public void addCountry(Country country){
         this.countries.add(country);
     }
+
     public boolean removeCountry(Country country){
         return this.countries.remove(country);
     }
