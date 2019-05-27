@@ -5,18 +5,12 @@ public class ExceptionHandling{
 
         SecondChallenge secondChallenge = new SecondChallenge();
 
-        try{
-
+        try {
             System.out.println(secondChallenge.probablyIWillThrowException(2,3));
-
-        }catch(Exception e){
-
+        } catch(Exception e) {
             System.out.println("Incorrect arguments of method probablyIWillThrowException");
-
-        }finally{
-
+        } finally {
             System.out.println("Going to the next step of program");
-
         }
     }
 }
