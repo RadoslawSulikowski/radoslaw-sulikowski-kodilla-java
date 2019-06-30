@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
-class Game{
+class Game {
 
     private Player player;
     private int pointsToWin;
@@ -12,159 +12,159 @@ class Game{
     private Computer computer = new Computer();
     private Random generator = new Random();
 
-    Game(Player player){
+    Game(Player player) {
         this.player = player;
         pointsToWin = 0;
     }
 
-    void getPointsToWinFromPlayer(){
+    void getPointsToWinFromPlayer() {
         System.out.print("How many points to win the game: ");
 
         boolean ifPointsToWinInt = false;
 
-        while(!ifPointsToWinInt){
-            try{
+        while (!ifPointsToWinInt) {
+            try {
                 pointsToWin = scanner.nextInt();
                 ifPointsToWinInt = true;
-            }catch(InputMismatchException e){
+            } catch(InputMismatchException e) {
                 System.out.println("Pleas enter integer");
                 scanner.next();
             }
         }
     }
 
-    private void runCaseStone(){
+    private void runCaseStone() {
 
         int generated = generator.nextInt(5) + 1;
 
-        if(generated == 1){//  COMPUTER PLAYS STONE
+        if (generated == 1) {//  COMPUTER PLAYS STONE
             System.out.println("YOU played STONE - Computer played STONE\nRound draw!");
         }
-        if(generated == 2){//  COMPUTER PLAYS PAPER
+        if (generated == 2) {//  COMPUTER PLAYS PAPER
             computer.addPoint();
             System.out.println("YOU played STONE - Computer played PAPER\nComputer won this round!");
         }
-        if(generated == 3){//  COMPUTER PLAYS SCISSORS
+        if (generated == 3) {//  COMPUTER PLAYS SCISSORS
             player.addPoint();
             System.out.println("YOU played STONE - Computer played SCISSORS\nYOU won this round!");
         }
-        if(generated == 4){//  COMPUTER PLAYS REPTILE
+        if (generated == 4) {//  COMPUTER PLAYS REPTILE
             player.addPoint();
             System.out.println("YOU played STONE - Computer played REPTILE\nYOU won this round!");
         }
-        if(generated == 5){//  COMPUTER PLAYS SPOCK
+        if (generated == 5) {//  COMPUTER PLAYS SPOCK
             computer.addPoint();
             System.out.println("YOU played STONE - Computer played SPOCK\nComputer won this round!");
         }
     }
 
-    private void runCasePaper(){
+    private void runCasePaper() {
 
         int generated = generator.nextInt(5) + 1;
 
-        if(generated == 1){//  COMPUTER PLAYS STONE
+        if (generated == 1) {//  COMPUTER PLAYS STONE
             player.addPoint();
             System.out.println("YOU played PAPER - Computer played STONE\nYOU won this round!");
         }
-        if(generated == 2){//  COMPUTER PLAYS PAPER
+        if (generated == 2) {//  COMPUTER PLAYS PAPER
             System.out.println("YOU played PAPER - Computer played PAPER\n  Round draw!");
         }
-        if(generated == 3){//  COMPUTER PLAYS SCISSORS
+        if (generated == 3) {//  COMPUTER PLAYS SCISSORS
             computer.addPoint();
             System.out.println("YOU played PAPER - Computer played SCISSORS\nComputer won this round!");
         }
-        if(generated == 4){//  COMPUTER PLAYS REPTILE
+        if (generated == 4) {//  COMPUTER PLAYS REPTILE
             computer.addPoint();
             System.out.println("YOU played PAPER - Computer played REPTILE\nComputer won this round!");
         }
-        if(generated == 5){//  COMPUTER PLAYS SPOCK
+        if (generated == 5) {//  COMPUTER PLAYS SPOCK
             player.addPoint();
             System.out.println("YOU played PAPER - Computer played SPOCK\nYOU won this round!");
         }
     }
 
-    private void runCaseScissors(){
+    private void runCaseScissors() {
 
         int generated = generator.nextInt(5) + 1;
 
-        if(generated == 1){//  COMPUTER PLAYS STONE
+        if (generated == 1) {//  COMPUTER PLAYS STONE
             computer.addPoint();
             System.out.println("YOU played SCISSORS - Computer played STONE\nComputer won this round!");
         }
-        if(generated == 2){//  COMPUTER PLAYS PAPER
+        if (generated == 2) {//  COMPUTER PLAYS PAPER
             player.addPoint();
             System.out.println("YOU played SCISSORS - Computer played PAPER\nYOU won this round!");
         }
-        if(generated == 3){//  COMPUTER PLAYS SCISSORS
-            computer.addPoint();
+        if (generated == 3) {//  COMPUTER PLAYS SCISSORS
             System.out.println("YOU played SCISSORS - Computer played SCISSORS\nRound draw!");
         }
-        if(generated == 4){//  COMPUTER PLAYS REPTILE
+        if (generated == 4) {//  COMPUTER PLAYS REPTILE
             player.addPoint();
             System.out.println("YOU played SCISSORS - Computer played REPTILE\nYOU won this round!");
         }
-        if(generated == 5){//  COMPUTER PLAYS SPOCK
+        if (generated == 5) {//  COMPUTER PLAYS SPOCK
+            computer.addPoint();
             System.out.println("YOU played SCISSORS - Computer played SPOCK\nComputer won this round!");
         }
     }
 
-    private void runCaseReptile(){
+    private void runCaseReptile() {
 
         int generated = generator.nextInt(5) + 1;
 
-        if(generated == 1){//  COMPUTER PLAYS STONE
+        if (generated == 1) {//  COMPUTER PLAYS STONE
             computer.addPoint();
             System.out.println("YOU played REPTILE - Computer played STONE\nComputer won this round!");
         }
-        if(generated == 2){//  COMPUTER PLAYS PAPER
+        if (generated == 2) {//  COMPUTER PLAYS PAPER
             player.addPoint();
             System.out.println("YOU played REPTILE - Computer played PAPER\nYOU won this round!");
         }
-        if(generated == 3){//  COMPUTER PLAYS SCISSORS
+        if (generated == 3) {//  COMPUTER PLAYS SCISSORS
             computer.addPoint();
             System.out.println("YOU played REPTILE - Computer played SCISSORS\nComputer won this round!");
         }
-        if(generated == 4){//  COMPUTER PLAYS REPTILE
+        if (generated == 4) {//  COMPUTER PLAYS REPTILE
             System.out.println("YOU played REPTILE - Computer played REPTILE\nRound draw!");
         }
-        if(generated == 5){//  COMPUTER PLAYS SPOCK
+        if (generated == 5) {//  COMPUTER PLAYS SPOCK
             player.addPoint();
             System.out.println("YOU played REPTILE - Computer played SPOCK\nYOU won this round!");
         }
     }
 
-    private void runCaseSpock(){
+    private void runCaseSpock() {
 
         int generated = generator.nextInt(5) + 1;
 
-        if(generated == 1){//  COMPUTER PLAYS STONE
+        if (generated == 1) {//  COMPUTER PLAYS STONE
             player.addPoint();
             System.out.println("YOU played SPOCK - Computer played STONE\nYOU won this round!");
         }
-        if(generated == 2){//  COMPUTER PLAYS PAPER
+        if (generated == 2) {//  COMPUTER PLAYS PAPER
             computer.addPoint();
             System.out.println("YOU played SPOCK - Computer played PAPER\nComputer won this round!");
         }
-        if(generated == 3){//  COMPUTER PLAYS SCISSORS
+        if (generated == 3) {//  COMPUTER PLAYS SCISSORS
             player.addPoint();
             System.out.println("YOU played SPOCK - Computer played SCISSORS\nYOU won this round!");
         }
-        if(generated == 4){//  COMPUTER PLAYS REPTILE
+        if (generated == 4) {//  COMPUTER PLAYS REPTILE
             computer.addPoint();
             System.out.println("YOU played SPOCK - Computer played REPTILE\nComputer won this round!");
         }
-        if(generated == 5){//  COMPUTER PLAYS SPOCK
+        if (generated == 5) {//  COMPUTER PLAYS SPOCK
             System.out.println("YOU played SPOCK - Computer played SPOCK\nRound draw!");
         }
     }
 
-    private boolean runCaseX(){
+    private boolean runCaseX() {
 
         System.out.println("Are you sure you want to end current game and exit? [y/n]");
 
-        while(true){
+        while (true) {
 
-            switch(scanner.next()){
+            switch (scanner.next()) {
 
                 case "y":
                     return true;
@@ -179,13 +179,13 @@ class Game{
         }
     }
 
-    private void runCaseN(){
+    private void runCaseN() {
 
         boolean endCaseN = false;
 
         System.out.println("Are you sure you want to end current game and start new game? [y/n]");
-        while(!endCaseN){
-            switch(scanner.next()){
+        while (!endCaseN) {
+            switch (scanner.next()) {
 
                 case "n":
                     endCaseN = true;
@@ -205,19 +205,19 @@ class Game{
         }
     }
 
-    private boolean runEndOfGame(){
+    private boolean runEndOfGame() {
 
-        if(player.getPoints() == pointsToWin){
+        if (player.getPoints() == pointsToWin) {
             System.out.println("YOU WON THE GAME!\n");
         }
-        if(computer.getPoints() == pointsToWin){
+        if (computer.getPoints() == pointsToWin) {
             System.out.println("YOU LOST THE GAME!\n");
         }
 
         System.out.println("What do you want to do?\n[x] - exit/[n] - new game");
 
-        while(true){
-            switch(scanner.next()){
+        while (true) {
+            switch (scanner.next()) {
 
                 case "x":
                     return true;
@@ -235,13 +235,13 @@ class Game{
         }
     }
 
-    void run(){
+    void run() {
         boolean end = false;
 
-        while(!end){
+        while (!end) {
             System.out.print("Chose your action (chose [i] - for instruction): ");
 
-            switch(scanner.next()){
+            switch (scanner.next()) {
 
                 case "1":   //PLAYER PLAYED STONE
                     runCaseStone();
@@ -282,7 +282,7 @@ class Game{
             System.out.println(player.getName() + "    " + player.getPoints() + "-" + computer.getPoints() + "    COMPUTER");
             System.out.println();
 
-            if(computer.getPoints() == pointsToWin || player.getPoints() == pointsToWin){
+            if (computer.getPoints() == pointsToWin || player.getPoints() == pointsToWin) {
                 end = runEndOfGame();
             }
         }

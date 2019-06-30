@@ -15,6 +15,6 @@ public class SimpleInvoiceTestSuit{
         invoice.addItem(new SimpleItem(new SimpleProduct("Product 3",  6.49), 5.0));
 
         //Then
-        Assert.assertEquals(108.975, invoice.getValueToPay(), 0);
+        Assert.assertEquals(108.975, invoice.getValueToPay(), 0.0001);
     }
 }
