@@ -6,9 +6,9 @@ public class ProductOrderService {
         OrderRequestRetriever orderRequestRetriever = new OrderRequestRetriever();
         OrderRequest orderRequest = orderRequestRetriever.retrieve();
 
-        OrderProcessor productOrderService = new OrderProcessor(new SMSService(), new GameOrderService(), new GameOrderRepository());
+        OrderProcessor orderProcessor = new OrderProcessor(new SMSService(), new GameOrderService(), new GameOrderRepository());
 
-        productOrderService.process(orderRequest);
+        orderProcessor.process(orderRequest);
 
     }
 }
