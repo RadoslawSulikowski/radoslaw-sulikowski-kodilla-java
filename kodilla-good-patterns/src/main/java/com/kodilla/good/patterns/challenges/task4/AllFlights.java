@@ -41,7 +41,7 @@ public class AllFlights {
                 .filter(transitAirport -> flightsSet.stream()
                         .filter(flight -> flight.getDepartureAirport().equals(transitAirport))
                         .map(Flight::getArrivalAirport)
-                        .collect(Collectors.joining(",")).contains(arrivalAirport))
+                        .collect(Collectors.joining()).contains(arrivalAirport))
                 .collect(Collectors.joining(", ", prefix, "."));
     }
 }
