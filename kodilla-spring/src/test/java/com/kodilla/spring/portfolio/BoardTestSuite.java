@@ -1,5 +1,6 @@
 package com.kodilla.spring.portfolio;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -13,14 +14,16 @@ public class BoardTestSuite {
         String toDoTask = "to do task";
         String inProgressTask = "in progress task";
         String doneTask = "done task";
-        //When
         board.getToDoList().addTask(toDoTask);
         board.getInProgressList().addTask(inProgressTask);
         board.getDoneList().addTask(doneTask);
+        //When
+        String resultToDoTask = board.getToDoList().getTask(0);
+        String resultInProgressTask = board.getInProgressList().getTask(0);
+        String resultDoneTask = board.getDoneList().getTask(0);
         //Then
-        System.out.println(board.getToDoList().getTask(0));
-        System.out.println(board.getInProgressList().getTask(0));
-        System.out.println(board.getDoneList().getTask(0));
-
+        Assert.assertEquals("to do task", resultToDoTask);
+        Assert.assertEquals("in progress task", resultInProgressTask);
+        Assert.assertEquals("done task", resultDoneTask);
     }
 }
