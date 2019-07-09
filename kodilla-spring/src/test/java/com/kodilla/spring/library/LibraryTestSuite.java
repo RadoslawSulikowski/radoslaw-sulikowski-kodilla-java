@@ -26,7 +26,7 @@ public class LibraryTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
         Library library = context.getBean(Library.class);
         //When
-        library.saveToDd();
+        library.saveToDb();
         //Then
         //do nothing
     }
