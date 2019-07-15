@@ -33,14 +33,10 @@ public class LibraryTestSuite {
                 .findFirst()
                 .orElse(null);
         library.getBooks().remove(bookToRemove);
-
-        Set<Book> libraryBooks = library.getBooks();
-        Set<Book> libraryShallowCopyBooks = libraryShallowCopy.getBooks();
-        Set<Book> libraryDeepCopyBooks = libraryDeepCopy.getBooks();
         //Then
-        Assert.assertEquals(4, libraryBooks.size());
-        Assert.assertEquals(4, libraryShallowCopyBooks.size());
-        Assert.assertEquals(5, libraryDeepCopyBooks.size());
+        Assert.assertEquals(4, library.getBooks().size());
+        Assert.assertEquals(4, libraryShallowCopy.getBooks().size());
+        Assert.assertEquals(5, libraryDeepCopy.getBooks().size());
 
         System.out.println("Library Books");
         for (Book book : library.getBooks()) {
