@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
 import java.util.Optional;
 
 @RunWith(SpringRunner.class)
@@ -31,6 +32,24 @@ public class TaskDaoTestSuite {
         Assert.assertTrue(readTask.isPresent());
 
         //CleanUp
+        taskDao.deleteById(id);
+    }
+
+    @Test
+    public void testTaskDaoFindByDuration() {
+        //Given
+        Task task = new Task(DESCRIPTION, 7);
+        taskDao.save(task);
+        int duration = task.getDuration();
+
+        //When
+        List<Task> readTask = taskDao.findByDuration(duration);
+
+        //Then
+        Assert.assertEquals(1, readTask.size());
+
+        //CleanUp
+        int id = readTask.get(0).getId();
         taskDao.deleteById(id);
     }
 }
