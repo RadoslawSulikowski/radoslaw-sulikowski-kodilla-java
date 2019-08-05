@@ -1,5 +1,6 @@
 package com.kodilla.hibernate.task;
 
+import com.kodilla.hibernate.tasklist.TaskList;
 import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ public class Task {
     private Date created;
     private int duration;
     private TaskFinancialDetails taskFinancialDetails;
+    private TaskList taskList;
 
     public Task() {
     }
@@ -52,6 +54,11 @@ public class Task {
     public TaskFinancialDetails getTaskFinancialDetails() {
         return taskFinancialDetails;
     }
+    @ManyToOne
+    @JoinColumn(name = "TASKLIS_ID")
+    public TaskList getTaskList() {
+        return taskList;
+    }
 
     private void setId(int id) {
         this.id = id;
@@ -71,5 +78,9 @@ public class Task {
 
     public void setTaskFinancialDetails(TaskFinancialDetails taskFinancialDetails) {
         this.taskFinancialDetails = taskFinancialDetails;
+    }
+
+    public void setTaskList(TaskList taskList) {
+        this.taskList = taskList;
     }
 }
