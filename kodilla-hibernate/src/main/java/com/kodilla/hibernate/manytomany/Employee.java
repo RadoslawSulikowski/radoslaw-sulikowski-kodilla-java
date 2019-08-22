@@ -5,7 +5,10 @@ import com.sun.istack.internal.NotNull;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@NamedQuery(
+        name = "Employee.retrieveEmployeesWithLastName",
+        query = "FROM Employee WHERE lastName LIKE :LASTNAME"
+)
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
