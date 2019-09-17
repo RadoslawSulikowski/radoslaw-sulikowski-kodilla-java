@@ -4,6 +4,7 @@ plugins {
 }
 
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'java'
 
 group = 'com.kodilla'
 version = '0.0.1-SNAPSHOT'
@@ -18,4 +19,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    compile 'javax.validation:validation-api:1.0.0.GA'
 }
