@@ -1,55 +1,61 @@
 package com.kodilla.sudoku;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-//import java.util.Scanner;
+import java.util.Scanner;
 
 class SudokuSolver {
-    private SudokuBoard board;
-    private Deque<Backtrack> backtracks = new ArrayDeque<>();
-    //private Scanner scanner = new Scanner(System.in);
+    private SudokuBoard inputBoard = new SudokuBoard();
+    private Scanner scanner = new Scanner(System.in);
 
-    SudokuSolver(SudokuBoard board) {
-        this.board = board;
+    SudokuSolver() {
+        inputBoard.createBoard();
     }
 
-    SudokuBoard getBoard() {
-        return board;
-    }
-
-    void solve() {
-        boolean solved = false;
-        boolean solvedCorrect;
-        while (!solved) {
-            boolean end = false;
-            while (!end) {
-                end = board.singlePosition() && board.singleCandidate();
-            }
-            if (!(board.isFilled())) {
-                if (!board.hasFieldWithNoCandidates()) {
-                    int fieldNumber = board.firstFieldWithTheLeastCandidates();
-                    int chosenCandidate = board.getFieldByFieldNumber(fieldNumber).getCandidates().get(0);
-                    backtracks.push(new Backtrack(board.copyBoard(), fieldNumber, chosenCandidate));
-                    board.getFieldByFieldNumber(fieldNumber).setValue(chosenCandidate);
-                    board.getFieldByFieldNumber(fieldNumber).getCandidates().clear();
-                    board.getFieldByFieldNumber(fieldNumber).getCandidates().add(chosenCandidate);
-                    board.removeCandidateFromRowColumnSection(fieldNumber);
-                    solved = false;
-                } else {
-                    if (backtracks.size() == 0) {
-                        solved = true;
-                        solvedCorrect = false;
-                    } else {
-                        Backtrack b = backtracks.pop();
-                        board = b.getBoard();
-                        board.getFieldByFieldNumber(b.getFieldNumber()).getCandidates().remove(0);
-                        solved = false;
-                    }
-                }
+    private void getDataFromUser() {
+        int row, column, value, fieldNumber;
+        String line;
+        String[] lineVector;
+        boolean resolve = false;
+        while (!resolve) {
+            line = scanner.nextLine();
+            if (line.equals("SUDOKU")) {
+                resolve = true;
             } else {
-                solved = true;
-                solvedCorrect = true;
+                lineVector = line.split(",");
+                for (int i = 0; i < (lineVector.length - 1) / 3 + 1; i++) {
+                    column = Integer.parseInt(lineVector[3 * i ]);
+                    row = Integer.parseInt(lineVector[3 * i + 1]);
+                    value = Integer.parseInt(lineVector[3 * i + 2]);
+                    fieldNumber = 9 * (row - 1) + column - 1;
+
+                    SudokuField field = inputBoard.getFieldByFieldNumber(fieldNumber);
+                    field.setValue(value);
+                    if (inputBoard.hasNoDuplicateValuesInRowColumnOrSection()) {
+                        field.setColumn(column);
+                        field.setRow(row);
+                        field.setSection((((row - 1) / 3) * 3 + (column - 1) / 3) + 1);
+                        field.setUserValue(true);
+                    } else {
+                        field.setValue(SudokuField.EMPTY);
+                        System.out.println("Value " + value + " is not allowed in column " + column + " and row " + row);
+                    }
+
+                    System.out.println(inputBoard.toString());
+                }
             }
+        }
+    }
+
+    boolean resolveSudoku() {
+        getDataFromUser();
+
+        SudokuBoard board = inputBoard.copyBoard();
+        board.prepareBoard();
+        if (board.solve()) {
+            System.out.println("Your sudoku has been solved correctly." + board.toString());
+            return true;
+        } else {
+            System.out.println("Your sudoku has no solution. Pleas check your input board:\n" + inputBoard.toString());
+            return false;
         }
     }
 }

@@ -1,26 +1,22 @@
 package com.kodilla.sudoku;
 
-public class Backtrack {
-    private SudokuBoard board;
-    private int fieldNumber;
-    private int chosenCandidate;
+public final class Backtrack {
+    private final SudokuBoard board;
+    private final int fieldNumber;
+    private final int chosenCandidate;
 
-    public Backtrack(SudokuBoard board, int fieldNumber, int chosenCandidate) {
+    Backtrack(final SudokuBoard board, final int fieldNumber, final int chosenCandidate) {
         this.board = board;
         this.fieldNumber = fieldNumber;
         this.chosenCandidate = chosenCandidate;
     }
 
-    public SudokuBoard getBoard() {
+    SudokuBoard getBoard() {
         return board;
     }
 
-    public int getFieldNumber() {
+    int getFieldNumber() {
         return fieldNumber;
-    }
-
-    public int getChosenCandidate() {
-        return chosenCandidate;
     }
 
     @Override

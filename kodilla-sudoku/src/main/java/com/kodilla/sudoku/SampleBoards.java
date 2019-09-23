@@ -2,25 +2,21 @@ package com.kodilla.sudoku;
 
 public interface SampleBoards {
 
-    static void prepareBoard(SudokuBoard board) {
-        for (SudokuField field : board.getBoard()) {
-            if (field.isUserValue()) {
-                field.getCandidates().clear();
-                field.getCandidates().add(field.getValue());
-            }
-            board.removeCandidateFromRowColumnSection(field.getFieldNumber());
-        }
-    }
-
     static SudokuBoard sampleBoardTest() {
 
         SudokuBoard board = new SudokuBoard();
         board.createBoard();
 
+        board.getBoard()[1].setValue(5);
+        board.getBoard()[1].setUserValue(true);
 
-        prepareBoard(board);
+        board.getBoard()[3].setValue(5);
+        board.getBoard()[3].setUserValue(true);
+
+        board.prepareBoard();
         return board;
     }
+
     static SudokuBoard sampleBoard1() {
 
         SudokuBoard board = new SudokuBoard();
@@ -140,7 +136,7 @@ public interface SampleBoards {
         board.getBoard()[76].setValue(1);
         board.getBoard()[76].setUserValue(true);
 
-        prepareBoard(board);
+        board.prepareBoard();
         return board;
     }
 
@@ -222,7 +218,7 @@ public interface SampleBoards {
         board.getBoard()[79].setValue(5);
         board.getBoard()[79].setUserValue(true);
 
-        prepareBoard(board);
+        board.prepareBoard();
         return board;
     }
 
@@ -297,9 +293,10 @@ public interface SampleBoards {
         board.getBoard()[78].setValue(8);
         board.getBoard()[78].setUserValue(true);
 
-        prepareBoard(board);
+        board.prepareBoard();
         return board;
     }
+    //Simple methods are not enough to solveWorkbench.
 
     static SudokuBoard sampleBoard4() {
 
@@ -378,11 +375,10 @@ public interface SampleBoards {
         board.getBoard()[80].setValue(8);
         board.getBoard()[80].setUserValue(true);
 
-        prepareBoard(board);
+        board.prepareBoard();
         return board;
     }
 
-    //Simple methods are not enough to solveWorkbench.
     static SudokuBoard sampleBoard5() {
 
         SudokuBoard board = new SudokuBoard();
@@ -472,7 +468,7 @@ public interface SampleBoards {
         board.getBoard()[80].setValue(4);
         board.getBoard()[80].setUserValue(true);
 
-        prepareBoard(board);
+        board.prepareBoard();
         return board;
     }
 
@@ -572,7 +568,7 @@ public interface SampleBoards {
         board.getBoard()[79].setValue(8);
         board.getBoard()[79].setUserValue(true);
 
-        prepareBoard(board);
+        board.prepareBoard();
         return board;
     }
 
@@ -656,7 +652,7 @@ public interface SampleBoards {
         board.getBoard()[72].setValue(4);
         board.getBoard()[72].setUserValue(true);
 
-        prepareBoard(board);
+        board.prepareBoard();
         return board;
     }
 
@@ -746,7 +742,7 @@ public interface SampleBoards {
         board.getBoard()[79].setValue(4);
         board.getBoard()[79].setUserValue(true);
 
-        prepareBoard(board);
+        board.prepareBoard();
         return board;
     }
 
@@ -758,7 +754,7 @@ public interface SampleBoards {
         board.getBoard()[0].setValue(7);
         board.getBoard()[0].setUserValue(true);
 
-        prepareBoard(board);
+        board.prepareBoard();
         return board;
     }
 
@@ -831,7 +827,7 @@ public interface SampleBoards {
         board.getBoard()[78].setValue(4);
         board.getBoard()[78].setUserValue(true);
 
-        prepareBoard(board);
+        board.prepareBoard();
         return board;
     }
 
