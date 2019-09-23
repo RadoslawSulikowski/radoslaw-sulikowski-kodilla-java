@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SudokuField {
-    public static final int EMPTY = 0;
+class SudokuField {
+    static final int EMPTY = 0;
     private int value;
     private int row;
     private int column;
@@ -14,61 +14,75 @@ public class SudokuField {
     private boolean userValue;
     private List<Integer> candidates = new ArrayList<>();
 
-    public SudokuField() {
+    SudokuField() {
         for (int i = 1; i < 10; i++) {
             candidates.add(i);
         }
     }
 
-    public int getValue() {
+    int getValue() {
         return value;
     }
 
-    public int getRow() {
+    int getRow() {
         return row;
     }
 
-    public int getColumn() {
+    int getColumn() {
         return column;
     }
 
-    public int getSection() {
+    int getSection() {
         return section;
     }
 
-    public int getFieldNumber() {
+    int getFieldNumber() {
         return fieldNumber;
     }
 
-    public boolean isUserValue() {
+    boolean isUserValue() {
         return userValue;
     }
 
-    public List<Integer> getCandidates() {
+    List<Integer> getCandidates() {
         return candidates;
     }
 
-    public void setValue(int value) {
+    void setValue(int value) {
         this.value = value;
     }
 
-    public void setRow(int row) {
+    void setRow(int row) {
         this.row = row;
     }
 
-    public void setColumn(int column) {
+    void setColumn(int column) {
         this.column = column;
     }
 
-    public void setSection(int section) {
+    void setSection(int section) {
         this.section = section;
     }
 
-    public void setFieldNumber(int fieldNumber) {
+    void setFieldNumber(int fieldNumber) {
         this.fieldNumber = fieldNumber;
     }
 
-    public void setUserValue(boolean userValue) {
+    void setUserValue(boolean userValue) {
         this.userValue = userValue;
+    }
+
+    SudokuField copyField(){
+        SudokuField copy = new SudokuField();
+
+        copy.setValue(this.value);
+        copy.setRow(this.row);
+        copy.setColumn(this.column);
+        copy.setSection(this.section);
+        copy.setFieldNumber(this.fieldNumber);
+        copy.setUserValue(this.userValue);
+        copy.getCandidates().clear();
+        copy.getCandidates().addAll(this.getCandidates());
+        return copy;
     }
 }
