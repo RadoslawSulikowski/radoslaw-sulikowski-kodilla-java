@@ -1,5 +1,7 @@
 package com.kodilla.hibernate.manytomany;
 
+import com.kodilla.hibernate.manytomany.facade.SomethingToReturnInList;
+
 import javax.validation.constraints.NotNull;
 
 import javax.persistence.*;
@@ -12,9 +14,16 @@ import java.util.List;
                 " WHERE SUBSTRING(COMPANY_NAME, 1, 3) LIKE :GIVENSIGNS",
         resultClass = Company.class
 )
+
+@NamedNativeQuery(
+        name = "Company.retrieveCompaniesWhoseNameContains",
+        query = "SELECT * FROM COMPANIES" +
+                " WHERE COMPANY_NAME LIKE :GIVENSIGNS",
+        resultClass = Company.class
+)
 @Entity
 @Table(name = "COMPANIES")
-public class Company {
+public class Company implements SomethingToReturnInList {
     private int id;
     private String name;
     private List<Employee> employees = new ArrayList<>();

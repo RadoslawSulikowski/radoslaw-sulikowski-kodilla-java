@@ -2,6 +2,7 @@ package com.kodilla.hibernate.manytomany.dao;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
+import com.kodilla.hibernate.manytomany.facade.SomethingToReturnInList;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +21,7 @@ public class CompanyDaoTestSuite {
     private EmployeeDao employeeDao;
 
     @Test
-    public void testSaveManyToMAny(){
+    public void testSaveManyToMany(){
         //Given
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
@@ -100,8 +101,8 @@ public class CompanyDaoTestSuite {
         int greyMatterId = greyMatter.getId();
 
         //When
-        List<Employee> resultEmployees = employeeDao.retrieveEmployeesWithLastName("Kovalsky");
-        List<Company> resultCompanies = companyDao.retrieveCompaniesWithNameStartedWith("Sof");
+        List<SomethingToReturnInList> resultEmployees = employeeDao.retrieveEmployeesWithLastName("Kovalsky");
+        List<SomethingToReturnInList> resultCompanies = companyDao.retrieveCompaniesWithNameStartedWith("Sof");
 
         //Then
         Assert.assertEquals(2, resultEmployees.size());

@@ -1,17 +1,21 @@
 package com.kodilla.hibernate.manytomany;
 
+import com.kodilla.hibernate.manytomany.facade.SomethingToReturnInList;
+
 import javax.validation.constraints.NotNull;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
 @NamedQuery(
         name = "Employee.retrieveEmployeesWithLastName",
         query = "FROM Employee WHERE lastName LIKE :LASTNAME"
 )
+
 @Entity
 @Table(name = "EMPLOYEES")
-public class Employee {
+public class Employee implements SomethingToReturnInList {
     private int id;
     private String firstName;
     private String lastName;
