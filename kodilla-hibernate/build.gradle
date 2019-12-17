@@ -20,5 +20,5 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    compile group: 'org.hibernate.validator:hibernate-validator:6.1.0.Final'
+    compile 'org.hibernate.validator:hibernate-validator:6.1.0.Final'
 }
