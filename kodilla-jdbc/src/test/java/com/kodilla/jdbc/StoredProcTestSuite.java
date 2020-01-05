@@ -1,12 +1,14 @@
 package com.kodilla.jdbc;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import static org.junit.Assert.assertEquals;
+
 
 public class StoredProcTestSuite {
 
