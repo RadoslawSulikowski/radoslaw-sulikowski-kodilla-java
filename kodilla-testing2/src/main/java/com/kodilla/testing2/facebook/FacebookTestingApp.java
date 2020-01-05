@@ -1,4 +1,4 @@
-package com.kodilla.testing2.com.kodilla.testing2.facebook;
+package com.kodilla.testing2.facebook;
 
 import com.kodilla.testing2.config.WebDriverConfig;
 import org.openqa.selenium.By;
